@@ -30,26 +30,26 @@ Retourne le solde actuel de points pour un utilisateur donné.
 ## Prérequis 🛠️  
 
 1. **StarkNet CLI** : Assurez-vous que StarkNet est installé et configuré.  
-2. **Cairo Compiler** : Installez le compilateur Cairo pour construire le contrat.  
+2. **Installez le compilateur Cairo pour construire le contrat.** 
    ```bash
    curl -L https://github.com/starkware-libs/cairo/releases/latest/download/cairo-ubuntu-20.04.tar.gz | tar -xz
-3. **Cairo Compiler** : Scarb : Installez Scarb, l’environnement de gestion de projet Cairo.  
+3. **Scarb : Installez Scarb, l’environnement de gestion de projet Cairo:** 
    ```bash
    curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh
 
 ## Installation 🚀
-1. **Cairo Compiler** : Scarb : Installez Scarb, l’environnement de gestion de projet Cairo.  
+1. **Scarb : Installez Scarb, l’environnement de gestion de projet Cairo.**  
    ```bash
    git clone https://github.com/<votre-utilisateur>/reward-contract.git
    cd reward-contract
    ```
 
-2. **Cairo Compiler** : Compilez le contrat avec Scarb :.  
+2. **Compilez le contrat avec Scarb :**  
    ```bash
    scarb build
    ```
 
-3. **Cairo Compiler** : Déployez le contrat sur le réseau StarkNet :.  
+3. **Déployez le contrat sur le réseau StarkNet :**
    ```bash
    starknet deploy --compiled_contract target/release/reward_contract.json
    ```
