@@ -5,7 +5,7 @@ use starknet::ContractAddress;
 pub trait I_REWARD<T> {
     fn add_points(ref self: T, _point: u64);
     fn redeem_points(ref self: T, _from: ContractAddress, _to: ContractAddress, _point: u64);
-    fn balance(self: @T) -> u64;
+    fn balance(self: @T, _owner: ContractAddress) -> u64;
 }
 
 
@@ -49,12 +49,9 @@ mod IT_REWARD {
         //
         fn add_points(ref self: ContractState, _point: u64) {
             // -::-
-            assert(_point < 1 || _point > 50, 'Point is out of range (1...50)');
-
-            // -::-
+            assert(1 <= _point && _point <= 50, 'Point is out of range');
             let caller = get_caller_address();
             let current_point = get_current_point(@self, caller);
-
             // -::-
             self.user_points.entry(caller).write(current_point + _point);
             self.emit(PointAdded { _to: caller, _point });
@@ -75,10 +72,9 @@ mod IT_REWARD {
             self.emit(PointReDeen { _to, _from, _point });
         }
 
-        fn balance(self: @ContractState) -> u64 {
+        fn balance(self: @ContractState, _owner: ContractAddress) -> u64 {
             // -::-
-            let caller = get_caller_address();
-            get_current_point(self, caller)
+            get_current_point(self, _owner)
         }
     }
 
